@@ -40,7 +40,7 @@ get_version = echo -e "1.0.0\n2.0.0"
 
 # Most services probably don't have interface extensions
 
-get_interfaceextensions = echo
+get_interfaceextensions echo
 
 # Web services should have a WSDL and may or may not have a profile
 
