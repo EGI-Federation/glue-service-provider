@@ -1,17 +1,12 @@
-Name:		glue-service-provider
-Version:	1.8.0
+Name:		glite-info-provider-service
+Version:	1.5.0
 Release:	1%{?dist}
 Summary:	The GLUE service information provider
+Group:		System/Monitoring
 License:	ASL 2.0
-# The source for this package was pulled from upstream's vcs.  Use the
-# following commands to generate the tarball:
-#   svn export http://svnweb.cern.ch/guest/gridinfo/glue-service-provider/tags/R_1_0_8 %{name}-%{version}
-#  tar -czvf %{name}-%{version}.tar.gz %{name}-%{version}
 Source:		%{name}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
-Group: Development/Libraries
-URL: https://tomtools.cern.ch/confluence/display/IS/ResourceBDII
 
 %description
 The GLUE service information provider
@@ -20,6 +15,7 @@ The GLUE service information provider
 %setup -q
 
 %build
+# Nothing to build
 
 %install
 rm -rf %{buildroot}
@@ -30,16 +26,14 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
+%dir /usr/bin
 %dir /etc/glite/info/service
-%dir /usr/share/doc/glite-info-provider-service
+%dir /usr/share/doc/%{name}
 /usr/bin/glite-info-glue2-service
 /usr/bin/glite-info-glue2-endpoint
 /usr/bin/glite-info-glue2-simple
-/usr/bin/glite-info-glue2-multi
-/usr/bin/glite-info-glue2-voms
 /usr/bin/glite-info-service
 /usr/bin/glite-info-service-glue2
-/usr/bin/glite-info-service-glue2-beta
 /usr/bin/glite-info-service-test
 /usr/bin/glite-info-service-amga
 /usr/bin/glite-info-service-bdii
@@ -60,18 +54,12 @@ rm -rf %{buildroot}
 /usr/bin/glite-info-service-gatekeeper
 /usr/bin/glite-info-service-status
 /etc/glite/info/service/glite-info-glue2-amga.conf.template
-/etc/glite/info/service/glite-info-glue2-bdii-site.conf.template
 /etc/glite/info/service/glite-info-glue2-bdii-top.conf.template
 /etc/glite/info/service/glite-info-glue2-lbserver.conf.template
 /etc/glite/info/service/glite-info-glue2-rtepublisher.conf.template
 /etc/glite/info/service/glite-info-glue2-vobox.conf.template
-/etc/glite/info/service/glite-info-glue2-voms.conf.template
-/etc/glite/info/service/glite-info-glue2-voms-admin.conf.template
 /etc/glite/info/service/glite-info-glue2-frontier.conf.template
 /etc/glite/info/service/glite-info-glue2-squid.conf.template
-/etc/glite/info/service/glite-info-glue2-myproxy.conf.template
-/etc/glite/info/service/glite-info-glue2-cemon.conf.template
-/etc/glite/info/service/glite-info-glue2-wmproxy.conf.template
 /etc/glite/info/service/glite-info-service-test.conf.template
 /etc/glite/info/service/glite-info-service-amga.conf.template
 /etc/glite/info/service/glite-info-service-bdii.conf.template
@@ -96,28 +84,13 @@ rm -rf %{buildroot}
 /etc/glite/info/service/glite-info-service-rtepublisher.conf.template
 /etc/glite/info/service/glite-info-service-gatekeeper.conf.template
 /etc/glite/info/service/glite-info-glue2-test.conf.template
-/etc/glite/info/service/glite-info-glue2-test2.conf.template
 /etc/glite/info/service/glite-info-glue2-service-test.conf.template
-/etc/glite/info/service/glue1.test.ldif
-/etc/glite/info/service/glue2.test.ldif
-/etc/glite/info/service/glue2.multi.test.ldif
-/etc/glite/info/service/glue2.test.ldif.prev
-%doc /usr/share/doc/glite-info-provider-service/README
-%doc /usr/share/doc/glite-info-provider-service/README-GLUE2
+/etc/glite/info/service/glite-info-glue2-bdii-site.conf.template
+%doc /usr/share/doc/%{name}/README
+%doc /usr/share/doc/%{name}/README-GLUE2
+
 
 %changelog
-* Mon Nov 14 2011 Stephen Burke <stephen.burke@stfc.ac.uk> - 1.8.0-1
-- New provider glite-info-glue2-multi, see bug 86646
-* Thu Jul 21 2011 Stephen Burke <stephen.burke@stfc.ac.uk> - 1.7.0-1
-- Various updates for voms, CREAM and WMS, see bugs 80789, 81840, 82645, 83105, 83313, 84373
-* Thu May 05 2011 Stephen Burke <stephen.burke@stfc.ac.uk> - 1.6.3-1
-- ... and fix a missing tab in the make file ...
-* Thu May 05 2011 Stephen Burke <stephen.burke@stfc.ac.uk> - 1.6.2-1
-- Add the ldif from the test config to the rpm
-* Thu May 05 2011 Stephen Burke <stephen.burke@stfc.ac.uk> - 1.6.1-1
-- Various minor bug fixes, see patch #4534 for details
-* Fri Mar 25 2011 Laurence Field <laurence.field@cern.ch> - 1.5.2-1
-- Changed the value of MYPROXY_CONF
 * Tue Mar 08 2011 Laurence Field <laurence.field@cern.ch> - 1.5.0-1
 - Now FHS Compliant
 * Tue Apr 06 2010 Laurence Field <laurence.field@cern.ch> - 1.3.3-1
