@@ -40,7 +40,7 @@ get_version = echo -e "1.0.0\n2.0.0"
 
 # Most services probably don't have interface extensions
 
-get_interfaceextensions = echo
+get_interfaceextensions echo
 
 # Web services should have a WSDL and may or may not have a profile
 
@@ -87,9 +87,8 @@ get_starttime = perl -e '@st=stat("/var/run/crond.pid");print "@st[10]\n";'
 
 # Extensions if any, as a list of key=value pairs
 # This will normally call a separate script
-# 14/7/11: Add a regression test for bug #84373 (duplicate keys)
 
-get_extensions = echo -e "world=disk\nsupport=turtle\nsupport=elephants"
+get_extensions = echo -e "world=disk\nsupport=turtle"
 
 # A list of AccessControlBaseRule strings to indicate who is allowed to
 # have access to the service - at the simplest this is the same as the
