@@ -23,7 +23,7 @@ service_type = org.glite.voms
 # This should be a command which returns the service interface version
 # in the format 3[.2[.1]]. Set to the server RPM version.
 
-get_version = rpm -q voms-server --queryformat '%{version}\n'
+get_version = rpm -q glite-security-voms-server --queryformat '%{version}\n'
 
 # A command to return the service endpoint to stdout (uses variables set
 # in the init script)
@@ -36,7 +36,7 @@ get_endpoint = echo voms://$VOMS_HOST:$VOMS_PORT/$VOMS_VO
 # The return code should indicate the status:
 # 0 = OK, 1 = Critical, 2 = Warning, 3 = Unknown, other = Other
 
-get_status = glite-info-service-test VOMS && /etc/init.d/voms status $VOMS_VO
+get_status = glite-info-service-test VOMS && $GLITE_LOCATION/etc/init.d/voms status $VOMS_VO
 
 # The URL of a WSDL document describing the service
 # If the string does not start with "http" this will be omitted
@@ -46,7 +46,7 @@ WSDL_URL = nohttp://not.a.web.service/
 # A URL to a web page defining the service semantics, e.g. a manual
 # If the string does not start with "http" this will be omitted
 
-semantics_URL = https://twiki.cern.ch/twiki/pub/EMI/EMIVomsDocumentation/voms-guide-2.0.0.pdf
+semantics_URL = https://edms.cern.ch/file/973684/1/voms-guide.pdf
 
 # StartTime: A command to return the service start time.
 # This should be a unix timestamp, the info provider converts it to ISO8601

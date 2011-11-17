@@ -34,7 +34,7 @@ get_endpoint = echo myproxy://$MYPROXY_HOST:$MYPROXY_PORT/
 # The return code should indicate the status:
 # 0 = OK, 1 = Critical, 2 = Warning, 3 = Unknown, other = Other
 
-get_status = glite-info-service-test MYPROXY && test -f /var/lock/subsys/myproxy-server && netstat -an --inet --inet6 | grep "^tcp .* \(::\|0.0.0.0\):${MYPROXYPORT:-7512} .*LISTEN" >/dev/null 2>&1
+get_status = glite-info-service-test MYPROXY && test -f /var/lock/subsys/myprox-server && netstat -an --inet --inet6 | grep "^tcp .* \(::\|0.0.0.0\):${MYPROXYPORT:-7512} .*LISTEN" >/dev/null 2>&1
 
 # The URL of a WSDL document describing the service
 # If the string does not start with "http" this will be omitted
@@ -69,6 +69,9 @@ get_acbr = egrep '^(authorized_renewers|default_renewers|authorized_retrievers|e
 # New GLUE 2 attributes start here
 
 # Capabilities are not very well-defined yet!
+# As usual there is no good match in the list; this seems closest although
+# it was probably intended for the likes of Argus
+# NB Misspelled as security.identymapping in the schema doc
 
 get_capabilities = echo security.credentialstorage
 
